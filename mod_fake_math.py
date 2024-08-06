@@ -1,7 +1,7 @@
 def divide(first, second):
     try:
         i = first / second
-    except (ZeroDivisionError, ValueError):
+    except (ZeroDivisionError:
         return str('Ошибка')
     else:
-        return int(i)
+        return i
