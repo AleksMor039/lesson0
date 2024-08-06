@@ -5,8 +5,8 @@ def divide(first, second):
 
     try:
         x = first / second
-    except (ZeroDivisionError, ValueError):
+    except ZeroDivisionError:
         return inf
     else:
-        return int(x)
+        return x
 
