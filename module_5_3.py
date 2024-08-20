@@ -1,5 +1,3 @@
-
-# Черновой вариант
 class House:
     def __init__(self, name, number_of_floors):
         self.name = name
@@ -30,9 +28,9 @@ class House:
         return self.number_of_floors != other.number_of_floors
 
     def __add__(self, value):
-        # if isinstance(value, int):
-        self.number_of_floors += value
-        return self
+        if isinstance(value, int):
+            self.number_of_floors += value
+            return self
 
     def __iadd__(self, value):
         self.number_of_floors += value
@@ -41,6 +39,20 @@ class House:
     def __radd__(self, value):
         self.number_of_floors += value
         return self
+
+    # def add(self, other):
+    #     if isinstance(other, House):
+    #         self.number_of_floors += other.number_of_floors
+    #     elif isinstance(other, int):
+    #         self.number_of_floors += other
+    #     return self
+    #
+    # def iadd(self, value):
+    #     return self.add(value)
+    #
+    # def radd(self, value):
+    #     return self.add(value)
+
 
 
 h1 = House('ЖК Горский', 18)
