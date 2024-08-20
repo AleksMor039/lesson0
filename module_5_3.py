@@ -40,18 +40,18 @@ class House:
         self.number_of_floors += value
         return self
 
-    # def add(self, other):
+    # def __add__(self, other):
     #     if isinstance(other, House):
     #         self.number_of_floors += other.number_of_floors
     #     elif isinstance(other, int):
     #         self.number_of_floors += other
     #     return self
     #
-    # def iadd(self, value):
-    #     return self.add(value)
+    # def __iadd__(self, value):
+    #     return self.__add__(value)
     #
-    # def radd(self, value):
-    #     return self.add(value)
+    # def __radd__(self, value):
+    #     return self.__add__(value)
 
 
 
