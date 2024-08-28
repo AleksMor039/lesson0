@@ -25,9 +25,9 @@ class Vehile:
             print(f'Нельзя сменить цвет на {new_color}')
 
     def print_info(self):
-        print(self.get_model)
-        print(self.get_horsepower)
-        print(self.get_color)
+        print(self.get_model())
+        print(self.get_horsepower())
+        print(self.get_color())
         print(self.owner)
 
 
