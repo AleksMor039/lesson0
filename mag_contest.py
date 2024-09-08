@@ -36,5 +36,5 @@ else:
 print(result)
 
 tasks_total = score_1 + score_2
-time_avg = (team1_time + team2_time) % 2
-print(f"Сегодня было решено {tasks_total} задач, в среднем по {time_avg} секунды на задачу!.")
+time_avg = (team1_time + team2_time) / task_total
+print(f"Сегодня было решено {tasks_total} задач, в среднем по {round(time_avg, 1)} секунды на задачу!.")
