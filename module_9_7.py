@@ -1,8 +1,8 @@
 def is_prime(func):
     def wrapper(a, b, c):
-        result = func(a, b, c)
-        for i in range(2, result):
-            if result % i == 0:
+        result_2 = func(a, b, c)
+        for i in range(2, result_2):
+            if result_2 % i == 0:
                 print("Составное")
                 break
             else:
