@@ -36,7 +36,7 @@ class Cafe:
                 print(f'{guest.name} в очереди')
 
     def discuss_guests(self):  # метод - имитация процесса обслуживания гостей
-        while not self.queue.empty() or self.any_guest_still_seated():
+        while not self.queue.empty() or self.any_guest_still_seated(): # работа пока есть очередь или хоть 1 стол с гостем
             for table in self.tables:
                 if table.guest and not table.guest.is_alive(): # проверка гостя (потока) и поток не жив
                     print(f'{table.guest.name} покушал(-а) и ушёл(ушла)')
@@ -49,13 +49,13 @@ class Cafe:
                     next_guest.start()
                     print(f'{next_guest.name} вышел(-ла) из очереди и сел(-а) за стол номер {table.number}')
 
-    def find_free_table(self):
+    def find_free_table(self): # поиск свободного или освободившегося стола
         for table in self.tables:
             if table.guest is None:
                 return table
         return None
 
-    def any_guest_still_seated(self):
+    def any_guest_still_seated(self): # поиск гостя 
         return any(table.guest is not None for table in self.tables)
 
 
