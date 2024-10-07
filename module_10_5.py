@@ -1,5 +1,4 @@
 import multiprocessing
-from PIL import Image  # PIL это спец библиотека для работы с изображениями
 import datetime
 
 
