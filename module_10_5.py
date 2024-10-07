@@ -2,36 +2,34 @@ import multiprocessing
 import datetime
 
 
-# ф-ия которая изм.размер изобр.
-def resize_image(image_path):  # принимает аргументом - путь к конкретной фотографии
-    image = Image.open(image_path)
-    image = image.resize((800, 600))  # методом resize изм.изобр
-    image.save(image_path)
+def read_info(name):  # аргум. назв. файла
+    all_data = []  # локал.список
+    with open(name, 'r') as file:  # откр.для чтения
+        while True: # цикл до тех пор пока строка не будет пустой
+            line = file.readline()  # метод читает одну полн.строку
+            all_data.append(line)  # считал - добавил в список
+            if not line:
+                break
 
+# создать список названий файлов как в архиве
+filenames = [f'./file {number}.txt' for number in range(1, 5)]
+
+# линейный вызов # 0:00:02.929243 (линейный)
 
 start = datetime.datetime.now()
-# при помощи цикла поменяем размер фотографий с 1 до 200й
-for i in range(1, 201):
-    image_path = f'./images/img_{i}.jpg'  # точка и слеш означает поиск файла в текущ.директории
-    resize_image(image_path)
+for file in filenames:
+    read_info(file)
 end = datetime.datetime.now()
-print(end - start)
+print(f'{end - start} (линейный)')
+
 ############################################################################################
 
+# мультипроцессный вызов # 0:00:01.305528 (многопроцессный)
 
-def resize_image(image_path):  # принимает аргументом - путь к конкретной фотографии
-    image = Image.open(image_path)
-    image = image.resize((800, 600))  # методом resize изм.изобр
-    image.save(image_path)
-
-
-if __name__ == '__main__':  # это проверка на то, что файл который запускается - основной(т.е. отделить от дочерних проц)
-    with multiprocessing.Pool(processes=4) as pool:  # Pool принимает аргументом количество процессов
-        all_images = []
-        for image in range(201, 401):
-            all_images.append(f'./image/img_{image}.jpg')
-        start = datetime.datetime.now()
-        pool.map(resize_image, all_images)  # pool приним. 1м аргум.функцию которой каждый процесс будет заниматься,
-        # 2м аргум. приним список
-    end = datetime.datetime.now()
-    print(end - start)
+# if __name__ == '__main__':  # это проверка на то, что файл который запускается - основной(т.е. отделить от дочерних проц)
+#     start = datetime.datetime.now()
+#     with multiprocessing.Pool(processes=len(filenames)) as pool:  # Pool принимает аргументом количество процессов
+#         pool.map(read_info, filenames)  # pool приним. 1м аргум.функцию которой каждый процесс будет заниматься,
+#         # 2м аргум. приним список
+#     end = datetime.datetime.now()
+#     print(f'{end - start} (многопроцессный)')
