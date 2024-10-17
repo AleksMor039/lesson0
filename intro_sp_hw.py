@@ -12,7 +12,8 @@ def introspection_info(obj):
     # методы
     methods = [method for method in attributes if callable(getattr(obj, method))]
     # к какому модулю принадлежит
-    module = inspect.getmodule(obj)
+    ########## неправильная запись module = inspect.getmodule(obj)
+    module = inspect.getmodule(introspection_info) # это правильная запись
     # вывести в виде словаря
     answer = {'type': ob_type, 'attributes': attributes, 'methods': methods, 'module': module}
 
