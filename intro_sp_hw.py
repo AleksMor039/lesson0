@@ -12,7 +12,7 @@ def introspection_info(obj):
     # методы
     methods = [method for method in attributes if callable(getattr(obj, method))]
     # к какому модулю принадлежит
-    module = obj.__class__.__module__
+    module = inspect.getmodule(obj)
     # вывести в виде словаря
     answer = {'type': ob_type, 'attributes': attributes, 'methods': methods, 'module': module}
 
